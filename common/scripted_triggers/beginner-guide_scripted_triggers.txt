@@ -1,0 +1,20 @@
+hasEmptyTileForRobot = {
+		is_colony = yes
+		any_tile = {
+			OR = {
+				has_pop = no
+				pop = {	is_robot_pop = no }
+			}
+			OR = {
+				has_building = "building_basic_mine"
+				has_building = "building_mining_network_1"
+				has_building = "building_mining_network_2"
+				has_building = "building_mining_network_3"
+				has_building = "building_mining_network_4"
+				has_building = "building_mining_network_5"
+				has_building = "building_mineral_processing_plant_1"
+				has_building = "building_mineral_processing_plant_2"
+			}
+		}
+		free_pop_tiles > 0
+}

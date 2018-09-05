@@ -1,5 +1,6 @@
 namespace = beginnerGuide
 
+
 country_event = {
 	id = beginnerGuide.1
 	title = beginnerGuide.1.name
@@ -89,10 +90,10 @@ country_event = {
 	id = beginnerGuide.4
 
 	mean_time_to_happen = { 
-		months = 1 
+		months = 5 
 		
 		modifier = {
-			factor = 100
+			factor = 25
 			NOT = { has_technology = "tech_robotic_workers" }
 		}
 
@@ -103,48 +104,14 @@ country_event = {
 		is_ai = no
 		has_technology = "tech_robotic_workers"
 		any_owned_planet = {
-			is_colony = yes
-			any_tile = {
-				OR = {
-					has_pop = no
-					pop = {	is_robot_pop = no }
-				}
-				OR = {
-					has_building = "building_basic_mine"
-					has_building = "building_mining_network_1"
-					has_building = "building_mining_network_2"
-					has_building = "building_mining_network_3"
-					has_building = "building_mining_network_4"
-					has_building = "building_mining_network_5"
-					has_building = "building_mineral_processing_plant_1"
-					has_building = "building_mineral_processing_plant_2"
-				}
-			}
-			free_pop_tiles > 0
+			hasEmptyTileForRobot = yes
 		}
 	}
 
 	immediate = {
 		random_owned_planet = {
 			limit = {
-				is_colony = yes
-				any_tile = {
-					OR = {
-						has_pop = no
-						pop = {	is_robot_pop = no }
-					}
-					OR = {
-						has_building = "building_basic_mine"
-						has_building = "building_mining_network_1"
-						has_building = "building_mining_network_2"
-						has_building = "building_mining_network_3"
-						has_building = "building_mining_network_4"
-						has_building = "building_mining_network_5"
-						has_building = "building_mineral_processing_plant_1"
-						has_building = "building_mineral_processing_plant_2"
-					}
-				}
-				free_pop_tiles > 0
+				hasEmptyTileForRobot = yes
 			}
 
 			planet_event = { id = beginnerGuide.5 }
@@ -167,5 +134,32 @@ planet_event = {
 
 	option = {
 		name = OK
+	}
+}
+
+pop_event = {
+	id = beginnerGuide.6
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		FromFrom = {
+			planet = {
+				owner = {
+					is_ai = no
+					has_technology = "tech_robotic_workers"
+				}
+				hasEmptyTileForRobot = yes
+			}
+		}
+	}
+	
+	immediate = {
+		FromFrom= {
+			planet = {
+				planet_event = { id = beginnerGuide.5 }
+			}
+		}
 	}
 }
